@@ -89,23 +89,34 @@
 
     <div class="form-container">
         <h2>إرسال سؤال للضيف</h2>
-        <form action="{{ route('submit.question') }}" method="POST" dir="rtl" style="text-align: right;">
-        @csrf
-        <div class="form-group">
-            <label for="registration_number">رقم القيد:</label>
-            <input type="text" class="form-control" id="registration_number" name="registration_number" required>
-        </div>
-        <div class="form-group">
-            <label for="name">الاسم:</label>
-            <input type="text" class="form-control" id="name" name="name" required>
-        </div>
-        <div class="form-group">
-            <label for="question">السؤال:</label>
-            <textarea class="form-control" id="question" name="question" rows="4" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">إرسال</button>
-    </form>
 
+        <!-- Display Success Message -->
+        @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+
+        <form action="{{ route('submit.question') }}" method="POST" dir="rtl" style="text-align: right;">
+            @csrf
+            <div class="form-group">
+                <label for="registration_number">رقم القيد:</label>
+                <input type="text" class="form-control" id="registration_number" name="registration_number" required>
+            </div>
+            <div class="form-group">
+                <label for="name">الاسم:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="question">السؤال:</label>
+                <textarea class="form-control" id="question" name="question" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">إرسال</button>
+        </form>
     </div>
+
 </body>
 </html>
